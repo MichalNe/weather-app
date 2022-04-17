@@ -21,7 +21,7 @@ services:
             - '../src/Kernel.php'
     GuzzleHttp\Client:
         class: 'GuzzleHttp\Client'
-    App\Domains\Weather\Service\WeatherApiService:
+    App\Domains\Weather\Application\WeatherApiService:
         arguments:
             $client: '@GuzzleHttp\Client'
             $apiKey: '%app.weather_api_key%'
