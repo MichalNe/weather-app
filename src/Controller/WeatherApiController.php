@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Domains\Weather\Exception\WeatherApiException;
-use App\Domains\Weather\Service\WeatherApiService;
+use App\Domains\Weather\Application\Exception\WeatherApiException;
+use App\Domains\Weather\Application\WeatherApiService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,12 +16,13 @@ class WeatherApiController extends AbstractController
         private WeatherApiService $weatherApiService,
     ) {}
 
-    /**
-     * @throws WeatherApiException
-     */
     #[Route('/api/weather/current/{parameter}', name: 'app_weather_api', methods: ['GET'])]
     public function index(string $parameter = self::DEFAULT_PARAMETER): Response
     {
-        $this->weatherApiService->fetchData([$parameter]);
+        try {
+            $this->weatherApiService->fetchData($parameter);
+        } catch (WeatherApiException $exception) {
+            return new Response($exception->getMessage(), Response::HTTP_BAD_REQUEST);
+        }
     }
 }
