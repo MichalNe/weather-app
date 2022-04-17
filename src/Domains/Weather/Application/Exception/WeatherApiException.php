@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Domains\Weather\Exception;
+namespace App\Domains\Weather\Application\Exception;
 
 use Exception;
 
