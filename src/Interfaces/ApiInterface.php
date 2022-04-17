@@ -4,5 +4,5 @@ namespace App\Interfaces;
 
 interface ApiInterface
 {
-    public function fetchData(string $url, array $options): array;
+    public function fetchData(array $options): array;
 }
