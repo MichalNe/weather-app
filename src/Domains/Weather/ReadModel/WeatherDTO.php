@@ -22,22 +22,6 @@ class WeatherDTO
         private CarbonImmutable $dataTime
     ) {}
 
-    public static function makeFromArray(array $data): self
-    {
-        return new self(
-            $data['location']['name'],
-            $data['location']['country'],
-            $data['current']['temp_c'],
-            $data['current']['feelslike_c'],
-            $data['current']['condition']['text'],
-            $data['current']['condition']['icon'],
-            $data['current']['wind_dir'],
-            $data['current']['pressure_mb'],
-            $data['current']['uv'],
-            CarbonImmutable::createFromFormat('Y-m-d H:i', $data['location']['localtime'])
-        );
-    }
-
     public function getName(): string
     {
         return $this->name;
