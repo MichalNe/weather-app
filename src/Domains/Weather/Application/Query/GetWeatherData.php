@@ -1,11 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Domains\Weather\ReadModel\Query;
+namespace App\Domains\Weather\Application\Query;
 
 class GetWeatherData
 {
-
     public function __construct(
         private string $parameter
     ) {}
