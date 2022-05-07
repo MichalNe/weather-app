@@ -1,8 +1,14 @@
-version: '3'
+version: '3.3'
 
 services:
-###> doctrine/doctrine-bundle ###
-  database:
+  db:
+    image: mysql:8
+    container_name: database
+    environment:
+      MYSQL_USER: 'db'
+      MYSQL_PASSWORD: 'db'
+      MYSQL_ROOT_PASSWORD: 'admin'
     ports:
-      - "5432"
-###< doctrine/doctrine-bundle ###
+      - '3306:3306'
+    volumes:
+      - ~/apps/mysql:/var/lib/mysql
