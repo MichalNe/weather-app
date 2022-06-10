@@ -168,4 +168,21 @@ class Weather
 
         return $this;
     }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'country' => $this->getCountry(),
+            'temperature' => $this->getTemperature(),
+            'feels_like_temperature' => $this->getFeelsLikeTemperature(),
+            'weather_description' => $this->getWeatherDescription(),
+            'weather_icon' => $this->getWeatherIcon(),
+            'wind_direction' => $this->getWindDirection(),
+            'pressure' => $this->getPressure(),
+            'uv_index' => $this->getUvIndex(),
+            'data_time' => $this->getDataTime()
+        ];
+    }
 }
