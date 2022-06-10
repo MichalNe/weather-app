@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Domains\Weather\Application\Query;
+namespace App\Domains\Weather\ReadModel\Query;
 
 class GetWeatherData
 {
