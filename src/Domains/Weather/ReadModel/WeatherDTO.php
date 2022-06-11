@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Domains\Weather\ReadModel;
 
 use Carbon\CarbonImmutable;
+use DateTime;
 
 class WeatherDTO
 {
@@ -67,8 +68,8 @@ class WeatherDTO
         return $this->uvIndex;
     }
 
-    public function getDataTime(): CarbonImmutable
+    public function getDataTime(): DateTime
     {
-        return $this->dataTime;
+        return $this->dataTime->toDateTime();
     }
 }
