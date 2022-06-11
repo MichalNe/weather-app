@@ -3,9 +3,10 @@
 namespace App\Controller;
 
 use App\Domains\Weather\Application\Command\SetWeatherData;
-use App\Domains\Weather\Application\Query\GetWeatherData;
 use App\Domains\Weather\Application\WeatherApiService;
+use App\Domains\Weather\ReadModel\Query\GetWeatherData;
 use App\Domains\Weather\ReadModel\WeatherReadModel;
+use App\Tools\Tools;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,13 +21,13 @@ class WeatherApiController extends AbstractController
     ) {}
 
     #[Route('/api/weather/current/{parameter}', name: 'app_weather_api', methods: ['GET'])]
-    public function index(string $parameter = self::DEFAULT_PARAMETER): Response
+    public function getWeather(string $parameter = self::DEFAULT_PARAMETER): Response
     {
         $query = new GetWeatherData($parameter);
 
-        $this->weatherReadModel->getWeatherData($query);
+        $weatherData = $this->weatherReadModel->getWeatherData($query);
 
-        return new Response('');
+        return new Response(Tools::serialize($weatherData));
     }
 
     #[Route('/api/weather/{parameter}', name: 'app_weather_api_set_data', methods: ['POST'])]
