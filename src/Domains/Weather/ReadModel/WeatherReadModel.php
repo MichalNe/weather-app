@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace App\Domains\Weather\ReadModel;
 
-use App\Domains\Weather\Application\Query\GetWeatherData;
 use App\Domains\Weather\DomainModel\WeatherRepository;
+use App\Domains\Weather\ReadModel\Query\GetWeatherData;
 
 class WeatherReadModel
 {
@@ -15,6 +15,6 @@ class WeatherReadModel
 
     public function getWeatherData(GetWeatherData $query): WeatherDTO
     {
-        $this->weatherRepository->getWeatherData($query);
+        return $this->weatherRepository->getWeatherData($query);
     }
 }
