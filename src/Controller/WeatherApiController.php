@@ -20,7 +20,7 @@ class WeatherApiController extends AbstractController
         private WeatherReadModel $weatherReadModel
     ) {}
 
-    #[Route('/api/weather/current/{parameter}', name: 'app_weather_api', methods: ['GET'])]
+    #[Route('/api/weather/current/{parameter}', name: 'app_weather_api_get_data', methods: ['GET'])]
     public function getWeather(string $parameter = self::DEFAULT_PARAMETER): Response
     {
         $query = new GetWeatherData($parameter);
